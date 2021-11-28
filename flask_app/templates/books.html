@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>Books</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col bg-dark text-white p-3">
+                <div class="row">
+                    <h2 class='text-center'>New Book</h2>
+                </div>
+                <form action="/create_book" method='POST'>
+                    <div class="form-group">
+                        <label for="title">Name: </label>
+                        <input type="text" name='title' class='form-control'>
+                    </div>
+                    <div class="form-group">
+                        <label for="num_of_pages">Page Count: </label>
+                        <input type="text" name='num_of_pages' class='form-control'>
+                    </div>
+                    <div class="form-group">
+                        <button type='submit'>Create</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1"></div>
+            <div class="col bg-dark text-white p-3 text-center">
+                <div class="row">
+                    <h2>All Books</h2>
+                </div>
+                {% for book in books %}
+                <div class="row p-1">
+                    <a href="/books/"+{{ book.id }} class='text-info'>{{ book.title }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row mt-4 text-center">
+            <a href="/authors">Home</a>
+        </div>
+    </div>
+</body>
+</html>

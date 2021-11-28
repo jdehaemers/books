@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>Authors</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col bg-dark text-white p-3">
+                <div class="row">
+                    <h2 class='text-center'>New Author</h2>
+                </div>
+                <form action="/create_author" method='POST'>
+                    <div class="form-group">
+                        <label for="name" class='mb-1'>Name: </label>
+                        <input type="text" name='name' class='form-control'>
+                    </div>
+                    <div class="form-group">
+                        <button type='submit' class='btn btn-primary m-3'>Create</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1"></div>
+            <div class="col bg-dark text-white p-3 text-center">
+                <div class="row">
+                    <h2>All Authors</h2>
+                </div>
+                {% for author in authors %}
+                <div class="row p-1">
+                    <a href="/authors/{{ author.id }}" class='text-info'>{{ author.name }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row mt-4 text-center">
+            <a href="/books">Add Books</a>
+        </div>
+    </div>
+</body>
+</html>
