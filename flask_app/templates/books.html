@@ -36,7 +36,7 @@
                 </div>
                 {% for book in books %}
                 <div class="row p-1">
-                    <a href="/books/"+{{ book.id }} class='text-info'>{{ book.title }}</a>
+                    <a href="/books/{{ book.id }}" class='text-info'>{{ book.title }}</a>
                 </div>
                 {% endfor %}
             </div>

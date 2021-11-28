@@ -10,3 +10,12 @@ def add_author_fave():
     }
     Favorite.create(data)
     return redirect('/authors/' + str(session['author_id']))
+
+@app.route('/books/add_fave', methods=['POST'])
+def add_book_fave():
+    data = {
+        'book_id' : session['book_id'],
+        'author_id' : request.form['favorite']
+    }
+    Favorite.create(data)
+    return redirect('/books/' + str(session['book_id']))

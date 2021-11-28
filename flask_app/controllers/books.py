@@ -15,3 +15,12 @@ def create_book():
         }
     Book.create(data)
     return redirect('/books')
+
+@app.route('/books/<index_for_book_faves>')
+def book_faves(index_for_book_faves):
+    data = {'book_id' : index_for_book_faves }
+    book = Book.get_one(data)[0]
+    faves = Book.get_faves(data)
+    options = Book.get_options(data)
+    session['book_id'] = book['id']
+    return render_template('book_faves.html', book=book, faves=faves, options=options)
